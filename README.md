@@ -4,7 +4,7 @@ This prototype pulls Shopify test orders into SQLite and exports an Excel sales 
 
 ## Run the offline demo
 
-Requirements are Python 3.10 or later, the SQLite command-line tool, and a shell such as macOS Terminal. Run these commands from the repository root in a fresh checkout.
+Requirements are Python 3.10 or later, the SQLite command-line tool, and a shell. Run these commands from the repository root in a fresh checkout.
 
 ```sh
 sqlite3 -bail bbq_demo.sqlite3 < sql/demo_dump.sql
@@ -14,14 +14,9 @@ python3 -m venv .venv
 .venv/bin/python export_excel.py
 ```
 
-Open `BBQ_Shopify_Demo.xlsx` and select **Sales Preview**. The dump restores **10 orders, 16 line items, 21 SKU units, and $313.00** in order totals. SKU units count packs as purchased. The Excel preview converts packs to individual bottle counts using the SKU mapping in `export_excel.py`.
+Open `BBQ_Shopify_Demo.xlsx` and select **Sales Preview**. The dump out to restore **10 orders, 16 line items, 21 SKU units, and $313.00** in order totals. SKU units count packs as purchased. The Excel preview converts packs to individual bottle counts using the SKU mapping in `export_excel.py`.
 
-| Invoice | Shopify order total | Shipping | Mixed Sale | SS bottles | DD bottles |
-|---|---:|---:|---|---:|---:|
-| #1009 | $33.00 | $5.00 | SS/DD | 2 | 1 |
-| #1010 | $38.00 | $8.00 | SS/DD | 1 | 2 |
-
-Invoice #1004 has a custom line without a SKU. Its bottle-count cells are blank and the preview includes a note.
+Note Invoice #1004 has a custom line without a SKU. Its bottle-count cells are blank and the preview includes a note.
 
 ## Relational schema and queries
 
